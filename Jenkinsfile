@@ -21,6 +21,7 @@ pipeline {
         stage("Unit Test") {
             steps {
                 sh '''
+                ls
                 chmod +x runTests
                 ./runTests
                 '''
