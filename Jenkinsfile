@@ -35,5 +35,26 @@ pipeline {
                 '''
             }
         }
+        stage('Static Analysis') {
+            steps {
+                sh '''
+                    cd AplikacjaCPP
+                    cppcheck --enable=all --inconclusive --xml --xml-version=2 src 2> build/cppcheck-report.xml
+                '''
+            }
+            post {
+                always {
+                    // Publikacja raportu z cppcheck
+                    publishHTML(target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'AplikacjaCPP/build',
+                        reportFiles: 'cppcheck-report.xml',
+                        reportName: 'Cppcheck Report'
+                    ])
+                }
+            }
+        }
     }
 }
