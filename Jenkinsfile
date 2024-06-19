@@ -6,13 +6,21 @@ pipeline {
                 git url: 'https://github.com/BigMoistLochu/CPPJenkins', branch: 'main'
             }
         }
-        stage("Unit Test") {
+        stage("Compile and Build") {
             steps {
                 sh '''
                 cd AplikacjaCPP/build
+                cmake ..
+                make
+                '''
+            }
+        }
+        stage("Unit Test") {
+            steps {
+                sh '''
                 chmod +x runTests
                 ./runTests
-        '''
+                '''
             }
         }
     }
