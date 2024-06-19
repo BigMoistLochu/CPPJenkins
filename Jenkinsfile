@@ -9,7 +9,10 @@ pipeline {
         stage("Compile and Build") {
             steps {
                 sh '''
-                cd AplikacjaCPP/build
+                cd AplikacjaCPP
+                mkdir -p build
+                cd build
+                rm -rf *
                 cmake ..
                 make
                 '''
