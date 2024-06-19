@@ -8,9 +8,11 @@ pipeline {
         }
         stage("Unit Test") {
             steps {
-                sh 'cd AplikacjaCPP/build'
-                sh 'ls'
-                sh './runTests'
+                sh '''
+                cd AplikacjaCPP/build
+                ls
+                ./runTests
+        '''
             }
         }
     }
