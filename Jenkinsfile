@@ -27,5 +27,13 @@ pipeline {
                 '''
             }
         }
+        stage('Coverage') {
+            steps {
+                sh '''
+                    cd AplikacjaCPP/build
+                    gcov ../src/*.cpp
+                '''
+            }
+        }
     }
 }
