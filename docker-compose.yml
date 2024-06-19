@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  jenkins-cpp:
+    build:
+      context: ./Jenkins
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  sonar-qube:
+    build:
+      context: ./SonarQube
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
