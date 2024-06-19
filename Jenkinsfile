@@ -21,7 +21,7 @@ pipeline {
         stage("Unit Test") {
             steps {
                 sh '''
-                ls
+                cd AplikacjaCPP/build
                 chmod +x runTests
                 ./runTests
                 '''
