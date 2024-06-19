@@ -3,7 +3,13 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-                git url: 'https://github.com/BigMoistLochu/JenkinsZadanie1', branch: 'main'
+                git url: 'https://github.com/BigMoistLochu/CPPJenkins', branch: 'main'
+            }
+        }
+        stage("Unit Test") {
+            steps {
+                sh 'cd AplikacjaCPP'
+                sh './runTests'
             }
         }
     }
