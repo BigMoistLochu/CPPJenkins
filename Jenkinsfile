@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh '''
                 cd AplikacjaCPP/build
-                ls
+                chmod +x runTests
                 ./runTests
         '''
             }
